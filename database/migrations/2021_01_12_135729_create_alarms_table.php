@@ -13,9 +13,15 @@ class CreateAlarmsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('alarms');
         Schema::create('alarms', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('patient_id')->constrained()->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->time('timeOfAlarm');
+            $table->time('timeOfAlarmOff')->nullable();
+            $table->string('nurse')->nullable();
         });
     }
 
@@ -29,3 +35,4 @@ class CreateAlarmsTable extends Migration
         Schema::dropIfExists('alarms');
     }
 }
+////
