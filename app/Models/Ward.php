@@ -9,4 +9,9 @@ class Ward extends Model
 {
     use HasFactory;
 
+
+    public function rooms()
+    {
+        return $this->belongsToMany('App\Models\Room');
+    }
 }
