@@ -17,9 +17,9 @@ class CreatePatientsTable extends Migration
             $table->id('id');
             $table->timestamps();
             $table->string('name');
-            $table->enum('bed',[1,2,3,4,5,6]);
-            $table->integer('room');
             $table->string('condition');
+            $table->foreignId('bed_id')->constrained()->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->enum('risk_level',[1,2,3,4,5]);
         });
     }

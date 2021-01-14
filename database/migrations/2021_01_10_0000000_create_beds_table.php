@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlarmsTable extends Migration
+class CreateBedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateAlarmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('alarms', function (Blueprint $table) {
+        Schema::create('beds', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('patient_id')->constrained()->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->time('timeOfAlarm');
-            $table->time('timeOfAlarmOff')->nullable();
-            $table->string('nurse')->nullable();
+            $table->integer('bed_number');
+            $table->foreignId('room_id')->constrained()->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 
@@ -31,7 +29,6 @@ class CreateAlarmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alarms');
+        Schema::dropIfExists('beds');
     }
 }
-////
