@@ -25,7 +25,7 @@ class PatientFactory extends Factory
         return [
             'name' => $this->faker->name,
             'condition' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
-            'bed_id' => Bed::inRandomOrder()->first->id,
+            'bed_id' => Bed::inRandomOrder()->first()->id,
         ];
     }
 }

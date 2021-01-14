@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            AlarmSeeder::class,
+            WardSeeder::class,
+            RoomSeeder::class,
             BedSeeder::class,
             PatientSeeder::class,
-            RoomSeeder::class,
-            WardSeeder::class,
+            AlarmSeeder::class,
         ]);
     }
 }

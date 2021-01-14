@@ -21,7 +21,7 @@ class CreateBedsTable extends Migration
             $table->timestamps();
             $table->foreignId('room_id')->constrained()->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->integer('bed_number');
+            $table->integer('bed_number')->default(0);
         });
     }
 

@@ -23,7 +23,8 @@ class BedFactory extends Factory
     public function definition()
     {
         return [
-            'room_id' => Room::inRandomOrder()->first->id,
+            //TODO limit to 8 per room
+            'room_id' => Room::inRandomOrder()->first()->id,
         ];
     }
 }
