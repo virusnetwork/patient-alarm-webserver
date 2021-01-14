@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('nurse/mainpage');
+    return view('welcome');
 });
+
+Route::get('ward/{id}','App\Http\Controllers\WardController@show');
