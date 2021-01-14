@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Bed;
+use App\Models\Room;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BedFactory extends Factory
@@ -22,7 +23,7 @@ class BedFactory extends Factory
     public function definition()
     {
         return [
-            
+            'room_id' => Room::inRandomOrder()->first->id,
         ];
     }
 }

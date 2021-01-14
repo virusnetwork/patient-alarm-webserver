@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Bed;
+use App\Models\Room;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,10 +19,16 @@ class CreateBedsTable extends Migration
         Schema::create('beds', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('bed_number');
             $table->foreignId('room_id')->constrained()->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->integer('bed_number');
         });
+    }
+
+    function bed_num()
+    {
+        $this->bed_number = Bed::where('room_id',$this->room_id)->count()+1;
+        
     }
 
     /**
