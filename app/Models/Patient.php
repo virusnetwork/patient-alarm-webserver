@@ -16,6 +16,6 @@ class Patient extends Model
 
     public function bed()
     {
-        return $this->belongsTo('App\Models\Bed');
+        return $this->hasOne('App\Models\Bed');
     }
 }
