@@ -14,6 +14,6 @@ class BedSeeder extends Seeder
      */
     public function run()
     {
-        $beds = Bed::factory()->count(100)->create();
+        $beds = Bed::factory()->count(300)->create();
     }
 }
