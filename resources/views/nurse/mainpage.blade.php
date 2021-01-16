@@ -19,7 +19,7 @@
     }
     #main {
         display:inline-block;
-  flex-flow: row-reverse wrap;
+        flex-flow: row-reverse wrap;
 }
 
 #main div {
