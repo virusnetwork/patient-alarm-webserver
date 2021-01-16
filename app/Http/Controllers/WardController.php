@@ -20,4 +20,10 @@ class WardController extends Controller
         $beds = Bed::whereIn('room_id',$room_ids)->get();
         return view('nurse.mainpage', ['rooms' => $rooms, 'beds' => $beds]);
     }
+
+    public function show2()
+    {
+        $wards = Ward::get('name');
+        return view('nurse.index', ['wards' => $wards]);
+    }
 }

@@ -23,4 +23,6 @@ Route::get('/dashboard', function () {
 
 Route::get('ward/{id}','App\Http\Controllers\WardController@show');
 
+Route::get('/index','App\Http\Controllers\WardController@show2');
+
 require __DIR__.'/auth.php';
