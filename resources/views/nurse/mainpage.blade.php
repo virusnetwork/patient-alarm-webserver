@@ -1,33 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('ward')
     Hospital Ward Name
 @endsection
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-    table ,
-    th,
-    td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-
-    th,
-    td {
-        padding: 5px;
-        text-align: left;
-    }
-    #main {
-        display:inline-block;
-        flex-flow: row-reverse wrap;
-}
-
-#main div {
-  width: 50px;
-  height: 50px;
-}
-
-</style>
 @section('body')
     @foreach ($rooms->sortBy('id') as $room)
     <div id='main'>
