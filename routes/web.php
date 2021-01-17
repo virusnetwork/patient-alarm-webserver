@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//php -S localhost:8000 -t public/ used to get server on local network
+
 Route::get('/', function () {
     return view('welcome');
 });
