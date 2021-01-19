@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('alarms', 'App\Http\Controllers\AlarmController@storeNewAlarm')->name('api.alarm.new');
+
+Route::get('/test',function(){
+    return "ok"; 
+});
