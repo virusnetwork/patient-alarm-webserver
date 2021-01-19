@@ -18,6 +18,7 @@ class CreateAlarmsTable extends Migration
             $table->timestamps();
             $table->foreignId('patient_id')->constrained()->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('reason');
             $table->time('timeOfAlarm');
             $table->time('timeOfAlarmOff')->nullable();
             $table->string('nurse')->nullable();
