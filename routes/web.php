@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 //php -S localhost:8000 -t public/ used to get server on local network
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/index');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('ward/{id}','App\Http\Controllers\WardController@show');
+Route::get('ward/{id}', 'App\Http\Controllers\WardController@show');
 
-Route::get('/index','App\Http\Controllers\WardController@show2')->name('index');
+Route::get('/index', 'App\Http\Controllers\WardController@show2')->name('index');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
