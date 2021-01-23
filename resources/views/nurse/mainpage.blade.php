@@ -9,18 +9,17 @@
                 @foreach ($rooms->sortBy('id') as $room)
                     <div class="p-4 md:w-1/3">
                         <div class=" h-full border-2 border-gray-200 border-opacity-60 rounded-lg
-                                                    overflow-hidden">
+                                                        overflow-hidden">
                             <table class="table-auto border-separate border">
                                 <tr>
-                                    <th class="border">Room {{ $room->id }} </th>
+                                    <th  colspan="2" class="border">Room {{ $room->id }} </th>
                                 </tr>
                                 @foreach ($beds as $bed)
-                                    @if ($bed->room_id == $room->id and ($loop->iteration % 2 == 0))
+                                    @if ($bed->room_id == $room->id and $loop->index % 2 == 0)
                                         <tr>
                                             <td class="border">{{ $bed->id }}</td>
-                                    @elseif ($bed->room_id == $room->id)
-                                        <td class="border">{{ $bed->id }}</td>
-                                        </tr>
+                                        @elseif ($bed->room_id == $room->id)
+                                            <td class="border">{{ $bed->id }}</td>
                                     @endif
                                 @endforeach
                             </table>
