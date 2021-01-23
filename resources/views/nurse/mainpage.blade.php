@@ -15,9 +15,11 @@
                                     <th class="border">Room {{ $room->id }} </th>
                                 </tr>
                                 @foreach ($beds as $bed)
-                                    @if ($bed->room_id == $room->id)
+                                    @if ($bed->room_id == $room->id and ($loop->iteration % 2 == 0))
                                         <tr>
                                             <td class="border">{{ $bed->id }}</td>
+                                    @elseif ($bed->room_id == $room->id)
+                                        <td class="border">{{ $bed->id }}</td>
                                         </tr>
                                     @endif
                                 @endforeach

@@ -39,7 +39,7 @@ Route::get('/room/{id}', function ($id) {
 Route::get('/ward/{id}', function ($id) {
     $ward = Ward::where('id',$id)->get();
     return WardResource::collection($ward);
-})->name('api.room.beds');
+})->name('api.ward.rooms');
 
 Route::get('/test', function () {
     return "ok";
