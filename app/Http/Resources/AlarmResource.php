@@ -24,7 +24,7 @@ class AlarmResource extends JsonResource
             'timeOfAlarm' => $this->timeOfAlarm,
             'updated_at' => $this->updated_at,
             'bed_id' => (Patient::find($this->patient_id)->first()->bed_id),
-            'room_id' => (Room::find($this->bed_id)->first()->id),
+            'room_id' => (Bed::find($this->bed_id)->first()->room_id),
             'risk_level' => $this->risk_level,
         ];
     }
