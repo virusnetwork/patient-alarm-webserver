@@ -22,6 +22,7 @@ class AlarmController extends Controller
         ]);
 
         $a = new Alarm();
+        $a->timeOfAlarm = now()->timestamp;
         $a->patient_id = Patient::where('bed_id', $validatedData['bed_id'])->first()->id;
         $a->bed_id =  $validatedData['bed_id'];
         $a->room_id = Bed::find($a->bed_id)->room_id;

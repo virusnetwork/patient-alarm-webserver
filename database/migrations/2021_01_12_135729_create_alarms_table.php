@@ -26,7 +26,7 @@ class CreateAlarmsTable extends Migration
                 ->onDelete('cascade');
             $table->string('reason');
             $table->enum('risk_level',[1,2,3,4,5])->default(3);
-            $table->bigInteger('timeOfAlarm')->default(now()->timestamp);
+            $table->bigInteger('timeOfAlarm');
             $table->bigInteger('timeOfAlarmOff')->nullable();
             $table->string('nurse')->nullable();
         });
