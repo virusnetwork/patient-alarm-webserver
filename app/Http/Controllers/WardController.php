@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alarm;
 use App\Models\Bed;
 use App\Models\Room;
 use App\Models\Ward;
@@ -18,7 +19,8 @@ class WardController extends Controller
         ///get all beds in given rooms
         $room_ids = Room::where('ward_id', '=', $ward_id)->get('id');
         $beds = Bed::whereIn('room_id',$room_ids)->get();
-        return view('nurse.mainpage', ['rooms' => $rooms, 'beds' => $beds]);
+        $alarms = Alarm::where('ward_id',$ward_id)->get();
+        return view('nurse.mainpage', ['rooms' => $rooms, 'beds' => $beds, 'alarms' =>$alarms]);
     }
 
     public function show2()

@@ -26,6 +26,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('alarms', 'App\Http\Controllers\AlarmController@storeNewAlarm')->name('api.alarm.new');
 
+Route::post('alarms', 'App\Http\Controllers\AlarmController@turnOffAlarm')->name('api.alarm.off');
+
 Route::get('/alarms/{id}', function ($id) {
     $alarms = Alarm::where('ward_id', $id)->get();
     return AlarmResource::collection($alarms);
