@@ -8,18 +8,26 @@
             <div class="flex flex-wrap -m-4">
                 @foreach ($rooms->sortBy('id') as $room)
                     <div class="p-4 md:w-1/3">
-                        <div class=" h-full border-2 border-gray-200 border-opacity-60 rounded-lg
-                                                        overflow-hidden">
+                        <div class=" h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                             <table class="table-auto border-separate border">
                                 <tr>
-                                    <th  colspan="2" class="border">Room {{ $room->id }} </th>
+                                    <th colspan="2" class="border">Room {{ $room->id }} </th>
                                 </tr>
                                 @foreach ($beds as $bed)
                                     @if ($bed->room_id == $room->id and $loop->index % 2 == 0)
-                                        <tr>
-                                            <td class="border">{{ $bed->id }}</td>
-                                        @elseif ($bed->room_id == $room->id)
-                                            <td class="border">{{ $bed->id }}</td>
+                                        @if ($alarms->contains('bed_id', $bed->id))
+                                            <tr>
+                                                <td style="background-color:#FF0000" class="border">{{ $bed->id }}</td>
+                                            @else
+                                            <tr>
+                                                <td class="border">{{ $bed->id }}</td>
+                                        @endif
+                                    @elseif ($bed->room_id == $room->id)
+                                        @if ($alarms->contains('bed_id', $bed->id))
+                                            <td style="background-color:#FF0000" class="border">{{ $bed->id }}</td>
+                                        @else
+                                            <td class="border">{{ $bed->id }}
+                                        @endif
                                     @endif
                                 @endforeach
                             </table>
