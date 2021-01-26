@@ -31,6 +31,8 @@ class AlarmController extends Controller
             $a->ward_id = Room::find($a->room_id)->ward_id;
             $a->reason = $validatedData['reason'];
             $a->save();
+        } else {
+            return response('alarm already exists for bed',400);
         }
         
         
