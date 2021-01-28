@@ -21,8 +21,7 @@ class AlarmController extends Controller
             'reason' => 'required|max:255',
         ]);
 
-        if (Alarm::where('bed_id',$validatedData['bed_id'])->count() === 0)
-        {
+        if (Alarm::where('bed_id', $validatedData['bed_id'])->count() === 0) {
             $a = new Alarm();
             $a->timeOfAlarm = now()->timestamp;
             $a->patient_id = Patient::where('bed_id', $validatedData['bed_id'])->first()->id;
@@ -32,26 +31,25 @@ class AlarmController extends Controller
             $a->reason = $validatedData['reason'];
             $a->save();
         } else {
-            return response('alarm already exists for bed',400);
+            return response('alarm already exists for bed', 400);
         }
-        
-        
     }
 
     public function turnOffAlarm(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'bed_id' => 'required|integer'
+            'bed_id' => 'required|integer',
+            'nurse' => 'required|max:255',
         ]);
 
-        if (Alarm::where('bed_id',$validatedData['bed_id'])->count() === 0) {
-            return response('no alarm exists for bed',400);
-
+        if (Alarm::where('bed_id', $validatedData['bed_id'])->first()->timeOfAlarmOff != null) {
+            return response('no alarm exists for bed', 400);
         } else {
-            $alarm = Alarm::where('bed_id',$validatedData['bed_id'])->first();
+            $alarm = Alarm::where('bed_id', $validatedData['bed_id'])->first();
             $alarm->timeOfAlarmOff = now()->timestamp;
             $alarm->nurse = $validatedData['nurse'];
+            $alarm->save();
+            return response('alarm is now off', 200);
         }
     }
 }
