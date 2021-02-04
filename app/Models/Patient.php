@@ -18,4 +18,17 @@ class Patient extends Model
     {
         return $this->hasOne('App\Models\Bed');
     }
+
+    public function setrisk_levelAttribute($value)
+    {
+        if ($value < $this->attributes['risk_level']) {
+            $error = \Illuminate\Validation\ValidationException::withMessages([
+                'field_name' => 'value must be lower then risk level'
+            ]);
+            throw $error;
+        } else {
+            $this->attributes['risk_level'] = $value;
+            $this->save();
+        }
+    }
 }

@@ -17,17 +17,20 @@
                                     @if ($bed->room_id == $room->id and $loop->index % 2 == 0)
                                         @if ($alarms->contains('bed_id', $bed->id))
                                             <tr>
-                                                <td style="background-color:#FF0000" class="border">{{ $bed->id }}</td>
+                                                <td style="background-color:#ff00005d" class="border">{{ $bed->id }}</td>
                                             @else
                                             <tr>
                                                 <td class="border">{{ $bed->id }}</td>
                                         @endif
                                     @elseif ($bed->room_id == $room->id)
                                         @if ($alarms->contains('bed_id', $bed->id))
-                                            <td style="background-color:#FF0000" class="border">{{ $bed->id }}</td>
+                                            <td style="background-color:#ff00005d" class="border">{{ $bed->id }}</td>
                                         @else
                                             <td class="border">{{ $bed->id }}
                                         @endif
+                                    @endif
+                                    @if (time() > $bed->timeOfAlarm + 60 * 15)
+                                        {{ $bed->risk_level}}
                                     @endif
                                 @endforeach
                             </table>
@@ -63,9 +66,6 @@
             el: '#root',
             data: {
                 com: [],
-                error: false,
-                message: '',
-                timez: 'nope',
             },
             methods: {
                 time: function(unix_timestamp) {
@@ -81,6 +81,12 @@
                     var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 
                     return formattedTime;
+                },
+                risk_level: function(unix_timestamp) {
+                    if (unix_timestamp > (unix_timestamp -= 5 * 60)) {
+                        return "boobies"
+                    }
+
                 }
             },
             mounted() {
