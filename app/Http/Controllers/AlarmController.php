@@ -6,10 +6,8 @@ use App\Models\Alarm;
 use App\Models\Bed;
 use App\Models\Room;
 use App\Models\Patient;
-use App\Models\Ward;
-use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+
 
 class AlarmController extends Controller
 {
