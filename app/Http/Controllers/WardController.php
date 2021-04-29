@@ -6,6 +6,7 @@ use App\Models\Alarm;
 use App\Models\Bed;
 use App\Models\Room;
 use App\Models\Ward;
+use Illuminate\Http\Request;
 
 class WardController extends Controller
 {
